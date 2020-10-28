@@ -9,11 +9,11 @@ class AWSCosts::ELB
   end
 
   def price_per_hour
-    @data['perELBHour']
+    @data.try(:[], 'perELBHour')
   end
 
   def price_per_gb
-    @data['perGBProcessed']
+    @data.try(:[], 'perGBProcessed')
   end
 
   def self.fetch region
@@ -30,7 +30,7 @@ class AWSCosts::ELB
       end
       result
     end
-    self.new(transformed[region])
+    self.new(transformed.try(:[],region) || {"perELBHour"=>0.0, "perGBProcessed"=>0.0})
   end
 
 end

@@ -6,11 +6,11 @@ require 'awscosts/version'
 Gem::Specification.new do |spec|
   spec.name          = "awscosts"
   spec.version       = AWSCosts::VERSION
-  spec.authors       = ["Stephen Bartlett"]
-  spec.email         = ["stephenb@rtlett.org"]
+  spec.authors       = ["Atish Sahoo"]
+  spec.email         = ["atish.sahoo@kumolua.com"]
   spec.description   = %q{AWSCosts provides an easier way to calculate the costs of running your project in AWS}
   spec.summary       = %q{Programmatic access to AWS pricing}
-  spec.homepage      = "https://github.com/srbartlett/awscosts"
+  spec.homepage      = "https://github.com/kumolus/awscosts"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)

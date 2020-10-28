@@ -23,7 +23,7 @@ class AWSCosts::EBS
         transformed[r['region']] = transformed[r['region']] + r['types']
       end
     end
-    self.new(transformed[region])
+    self.new(transformed.try(:[], region) || [])
   end
 
 end

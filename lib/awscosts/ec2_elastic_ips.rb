@@ -30,6 +30,8 @@ class AWSCosts::ElasticIPs
 
   def self.fetch region
     transformed = AWSCosts::Cache.get_jsonp('/pricing/1/ec2/pricing-elastic-ips.min.js') do |data|
+      puts data['config']['regions'].map { |r| puts r["region"] }
+
       result = {}
       data['config']['regions'].each do |r|
         container = {}
@@ -42,7 +44,7 @@ class AWSCosts::ElasticIPs
       end
       result
     end
-    self.new(transformed[region])
+    self.new(transformed.try(:[],region) || {})
   end
 
 end

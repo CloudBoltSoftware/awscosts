@@ -55,10 +55,10 @@ class AWSCosts::EC2OnDemand
       end
     end
 
-    raise "No result for region #{region} while fetching EC2 OnDemand Pricing"            if result[region].nil?
-    raise "No result for #{type} in region #{region} while fetching EC2 OnDemand Pricing" if result[region][type].nil?
+    # raise "No result for region #{region} while fetching EC2 OnDemand Pricing"            if result[region].nil?
+    # raise "No result for #{type} in region #{region} while fetching EC2 OnDemand Pricing" if result[region][type].nil?
 
-    self.new(result[region][type])
+    self.new(result.try(:[],region).try(:[],type) || {})
   end
 
 end
